@@ -98,6 +98,9 @@ void op_pchar(stack_t **stack, unsigned int line_number);
 void op_pstr(stack_t **stack, unsigned int line_number);
 void op_rotl(stack_t **stack, unsigned int line_number);
 
+/* op_rotr.c */
+void op_rotr(stack_t **stack, unsigned int line_number);
+
 /* stack_operations.c */
 int stack_length(stack_t **stack);
 

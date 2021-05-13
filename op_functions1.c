@@ -27,7 +27,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	if (*(global_var.command_array[1]) == '\0')
+	if ((global_var.command_array[1]) == NULL)
 	{	fclose(global_var.fp);
 		free(new_node);
 		free_stack(stack);

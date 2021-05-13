@@ -26,7 +26,7 @@ void (*op_selector(int l, stack_t **top))(stack_t **top, unsigned int line_n)
 		{"pchar", op_pchar},
 		{"pstr", op_pstr},
 		{"rotl", op_rotl},
-		/*{"rotr", op_rotr},*/
+		{"rotr", op_rotr},
 		{NULL, NULL}
 	};
 
