@@ -15,7 +15,7 @@ void op_swap(stack_t **stack, unsigned int line_number)
 	{
 		fclose(global_var.fp);
 		free_stack(stack);
-		printf("L%d: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	temp = (*stack)->n;
@@ -38,7 +38,7 @@ void op_add(stack_t **stack, unsigned int line_number)
 	{
 		fclose(global_var.fp);
 		free_stack(stack);
-		printf("L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	sum = (*stack)->n + (*stack)->next->n;

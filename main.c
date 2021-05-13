@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		global_var.fp = fopen(argv[1], "r");
 		if (global_var.fp == NULL)
 		{
-			printf("Error: Can't open file %s\n", argv[1]);
+			fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 			exit(EXIT_FAILURE);
 		}
 		while (is_EOF != EOF)
@@ -63,19 +63,19 @@ void check_permissions(char *file_name)
 	access_permission = access(file_name, F_OK);
 	if (access_permission == -1)
 	{
-		printf("Error: Can't open file %s\n", file_name);
+		fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
 	access_permission = access(file_name, R_OK);
 	if (access_permission == -1)
 	{
-		printf("Error: Can't open file %s\n", file_name);
+		fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
 	str_len = str_length(file_name);
 	if (file_name[str_len - 1] != 'm' || file_name[str_len - 2] != '.')
 	{
-		printf("Error: Can't open file %s\n", file_name);
+		fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
 }

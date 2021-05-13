@@ -16,7 +16,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fclose(global_var.fp);
-		printf("L%d: usage: push integer\n", line_number); /* Check error message */
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);/*Checkmsg*/
 		exit(EXIT_FAILURE);
 	}
 	new_node = malloc(sizeof(stack_t));
@@ -24,14 +24,14 @@ void op_push(stack_t **stack, unsigned int line_number)
 	{
 		fclose(global_var.fp);
 		free_stack(stack);
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	if (*(global_var.command_array[1]) == '\0')
 	{	fclose(global_var.fp);
 		free(new_node);
 		free_stack(stack);
-		printf("L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	n = strtol(global_var.command_array[1], &end_point, 10); /* Revisar msj */
@@ -39,7 +39,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	{	fclose(global_var.fp);
 		free_stack(stack);
 		free(new_node);
-		printf("L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = (int)n;
@@ -82,7 +82,7 @@ void op_pint(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fclose(global_var.fp);
-		printf("L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
@@ -102,7 +102,7 @@ void op_pop(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		fclose(global_var.fp);
-		printf("L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
