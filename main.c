@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	void (*op_function)(stack_t **, unsigned int);
 
 	global_var.command_array = buffer_array;
-	if (argc > 1)
+	if (argc == 2)
 	{
 		check_permissions(argv[1]);
 		global_var.fp = fopen(argv[1], "r");
