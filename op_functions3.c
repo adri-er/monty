@@ -70,7 +70,7 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stack)->n < 0 || (*stack)->n > 128)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
 		fclose(global_var.fp);
 		free_stack(stack);
@@ -98,7 +98,7 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 		{
 			break;
 		}
-		if (copy->n < 0 || copy->n > 128)
+		if (copy->n < 0 || copy->n > 127)
 		{
 			fclose(global_var.fp);
 			free_stack(stack);
