@@ -19,6 +19,10 @@ void (*op_selector(int l, stack_t **top))(stack_t **top, unsigned int line_n)
 		{"swap", op_swap},
 		{"add", op_add},
 		{"nop", op_nop},
+		{"sub", op_sub},
+		{"div", op_div},
+		{"mul", op_mul},
+		{"mod", op_mod},
 		{NULL, NULL}
 	};
 
