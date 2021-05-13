@@ -6,18 +6,18 @@
  * 
  * Return: pointer to functions related to command.
  */
-void (*opcode_selector(int line_num))(stack_t **stack, unsigned int line_number)
+void (*opcode_selector(int line_num, stack_t **stack))(stack_t **stack, unsigned int line_number)
 {
     int i = 0;
 
     instruction_t list[] = {
         {"push", op_push},
         {"pall", op_pall},
-        /*{"pint", op_pint},
+        {"pint", op_pint},
         {"pop", op_pop},
         {"swap", op_swap},
         {"add", op_add},
-        {"nop", op_nop},*/
+        {"nop", op_nop},
         {NULL, NULL}
     };
 
@@ -29,6 +29,7 @@ void (*opcode_selector(int line_num))(stack_t **stack, unsigned int line_number)
         }
     }
     printf("L%d: unknown instruction %s\n", line_num, global_var.command_array[0]);
+    free_stack(stack);
     fclose(global_var.fp);
     exit(EXIT_FAILURE);
 }

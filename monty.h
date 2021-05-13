@@ -71,10 +71,21 @@ int process_input(char *clean_buffer);
 void tokenizer(char *clean_buffer);
 
 /* selector.c */
-void (*opcode_selector(int line_num))(stack_t **stack, unsigned int line_number);
+void (*opcode_selector(int line_num, stack_t **stack))(stack_t **stack, unsigned int line_number);
 
 /* op_functions1.c */
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **stack, unsigned int line_number);
+void op_pint(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
+
+/* op_functions2.c */
+void op_swap(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
+void op_nop(stack_t **stack, unsigned int line_number);
+
+/* stack_operations.c */
+int stack_length(stack_t **stack);
 
 #endif /* MONTY_H */

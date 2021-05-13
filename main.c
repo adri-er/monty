@@ -33,13 +33,13 @@ int main(int argc, char *argv[])
             is_EOF = process_input(clean_buffer);
             if (is_EOF == EOF)
             {
-                /* Free linked list */
                 fclose(global_var.fp);
+                free(stack);
                 return (EXIT_SUCCESS);
             }
-            op_function = opcode_selector(line_number);
+            op_function = op_function;
+            op_function = opcode_selector(line_number, &stack);
             op_function(&stack, line_number);
-            /* Free linked list */
         }
     }
     return (0);
