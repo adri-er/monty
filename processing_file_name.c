@@ -2,18 +2,17 @@
 
 /**
  * process_input - processes each line of the file introduced.
- * @clean_buffer: buffer without initial spaces.  
- * @fp: pointer to file in memory.
- * 
+ * @clean_buffer: buffer without initial spaces.
+ *
  * Return: EOF if end of file is reached, EXIT_FAILURE if getline fails.
  */
-int process_input(char *clean_buffer, FILE *fd, char *command_array[])
+int process_input(char *clean_buffer)
 {
     char *buffer_tmp = NULL;
     size_t length = 0;
     ssize_t n_characters = 0;
 
-    n_characters = getline(&buffer_tmp, &length, fd);
+    n_characters = getline(&buffer_tmp, &length, global_var.fp);
     if (n_characters == -1)
     {       
         free(buffer_tmp);
@@ -26,19 +25,18 @@ int process_input(char *clean_buffer, FILE *fd, char *command_array[])
     }
     buffer_cleaner(clean_buffer, buffer_tmp, n_characters);
     free(buffer_tmp);
-    tokenizer(command_array, clean_buffer);
+    tokenizer(clean_buffer);
     
     return (EXIT_SUCCESS);
 }
 
 /**
  * tokenizer - tokenizes a line to an array. 
- * @array: arrays of commands. 
  * @clean_buffer: buffer without initial spaces.
  * 
  * Return: None. 
  */
-void tokenizer(char *command_array[], char *clean_buffer)
+void tokenizer(char *clean_buffer)
 {
     int i = 0;
     char *token = NULL;
@@ -46,7 +44,7 @@ void tokenizer(char *command_array[], char *clean_buffer)
     while (1)
     {
         token = strtok(((i == 0) ? clean_buffer : NULL), " ");
-        command_array[i] = token;
+        global_var.command_array[i] = token;
         if (token == NULL)
             break;
         i++;
@@ -57,6 +55,7 @@ void tokenizer(char *command_array[], char *clean_buffer)
  * buffer_cleaner - removes initial spaces from line and \\n line jump.
  * @clean_buffer: buffer without initial spaces.  
  * @buffer_temp: buffer with initial spaces.
+ * @n_characters: number of characters in getline.
  * 
  * Return: None.
  */

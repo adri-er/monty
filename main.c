@@ -1,5 +1,7 @@
 #include "monty.h"
 
+glob_var global_var = {NULL, NULL};
+
 /**
  * main - main function of the monty processing.
  * @argc: integer with the amount of arguments.
@@ -10,29 +12,34 @@
 int main(int argc, char *argv[])
 {
     ssize_t is_EOF = 0;
-    FILE *fp = NULL;
-    int line_number = 0;
-    char clean_buffer[5000], *command_array[2000];
-    
+    char clean_buffer[5000], *buffer_array[2000];
+    stack_t *stack = NULL;
+    unsigned int line_number = 0;
+    void (*op_function)(stack_t **, unsigned int);
+
+    global_var.command_array = buffer_array;
     if (argc > 1)
     {
         check_permissions(argv[1]);
-        fp = fopen(argv[1], "r");
-        if (fp == NULL)
+        global_var.fp = fopen(argv[1], "r");
+        if (global_var.fp == NULL)
         {
-            printf("Error: Can't open file %s", argv[1]);
+            printf("Error: Can't open file %s\n", argv[1]);
             exit(EXIT_FAILURE);
         }
         while (is_EOF != EOF)
         {
             line_number++;
-            is_EOF = process_input(clean_buffer, fp, command_array);
+            is_EOF = process_input(clean_buffer);
             if (is_EOF == EOF)
             {
-                fclose(fp);
+                /* Free linked list */
+                fclose(global_var.fp);
                 return (EXIT_SUCCESS);
             }
-
+            op_function = opcode_selector(line_number);
+            op_function(&stack, line_number);
+            /* Free linked list */
         }
     }
     return (0);
@@ -53,19 +60,19 @@ void check_permissions(char *file_name)
     access_permission = access(file_name, F_OK);
     if (access_permission == -1)
     {
-        printf("Error: Can't open file %s", file_name);
+        printf("Error: Can't open file %s\n", file_name);
         exit(EXIT_FAILURE);
     }
     access_permission = access(file_name, R_OK);
     if (access_permission == -1)
     {
-        printf("Error: Can't open file %s", file_name);
+        printf("Error: Can't open file %s\n", file_name);
         exit(EXIT_FAILURE);
     }
     str_len = str_length(file_name);
     if (file_name[str_len - 1] != 'm' || file_name[str_len - 2] != '.')
     {
-        printf("Error: Can't open file %s", file_name);
+        printf("Error: Can't open file %s\n", file_name);
         exit(EXIT_FAILURE);
     }
 }
