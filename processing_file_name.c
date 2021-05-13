@@ -12,6 +12,7 @@ int process_input(char *clean_buffer)
 	size_t length = 0;
 	ssize_t n_characters = 0;
 
+	*clean_buffer = '\0';
 	n_characters = getline(&buffer_tmp, &length, global_var.fp);
 	if (n_characters == -1)
 	{
@@ -48,7 +49,7 @@ void tokenizer(char *clean_buffer)
 
 	while (1)
 	{
-		token = strtok(((i == 0) ? clean_buffer : NULL), " \t\b\v\n");
+		token = strtok(((i == 0) ? clean_buffer : NULL), " ");
 		global_var.command_array[i] = token;
 		if (token == NULL)
 			break;
