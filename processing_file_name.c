@@ -24,6 +24,11 @@ int process_input(char *clean_buffer)
 		free(buffer_tmp);
 		return (EMPTY_LINE);
 	}
+	if (*clean_buffer == '#')
+	{
+		free(buffer_tmp);
+		return (COMMENT);
+	}
 	free(buffer_tmp);
 	tokenizer(clean_buffer);
 

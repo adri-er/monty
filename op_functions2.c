@@ -107,7 +107,7 @@ void op_div(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	div = (*stack)->next->n / (*stack)->n;
+	div = ((*stack)->next->n) / ((*stack)->n);
 	(*stack)->next->n = div;
 	op_pop(stack, line_number);
 }

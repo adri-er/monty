@@ -10,6 +10,7 @@
 
 /*---------------MACROS-------------------*/
 #define EMPTY_LINE 3
+#define COMMENT 4
 
 /*---------------STRUCTURES-------------------*/
 /**

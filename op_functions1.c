@@ -65,7 +65,7 @@ void op_pall(stack_t **stack, unsigned int line_number)
 	line_number = line_number;
 	while (copy)
 	{
-		printf("%d\n", copy->n);
+		fprintf(stdout, "%d\n", copy->n);
 		copy = copy->next;
 	}
 }

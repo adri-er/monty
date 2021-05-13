@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 				free_stack(&stack);
 				return (EXIT_SUCCESS);
 			}
-			if (is_EOF == EMPTY_LINE)
+			if (is_EOF == EMPTY_LINE || is_EOF == COMMENT)
 			{
 				continue;
 			}
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
  */
 void check_permissions(char *file_name)
 {
-	int str_len, access_permission;
+	int access_permission;
 
 	access_permission = access(file_name, F_OK);
 	if (access_permission == -1)
@@ -72,10 +72,12 @@ void check_permissions(char *file_name)
 		fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
-	str_len = str_length(file_name);
-	if (file_name[str_len - 1] != 'm' || file_name[str_len - 2] != '.')
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", file_name);
-		exit(EXIT_FAILURE);
-	}
+	/**
+	* str_len = str_length(file_name);
+	* if (file_name[str_len - 1] != 'm' || file_name[str_len - 2] != '.')
+	* {
+	*	fprintf(stderr, "Error: Can't open file %s\n", file_name);
+	*	exit(EXIT_FAILURE);
+	* }
+	*/
 }
