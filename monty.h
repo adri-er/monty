@@ -8,6 +8,9 @@
 #include <unistd.h>
 #include <string.h>
 
+/*---------------MACROS-------------------*/
+#define EMPTY_LINE 3
+
 /*---------------STRUCTURES-------------------*/
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -20,9 +23,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -35,22 +38,22 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
  * struct global_values - global values needed.
- * @opcode: the opcode
- * @f: function to handle the opcode
+ * @fp: filepointer to bytecode.
+ * @command_array: array with the opcodes.
  *
- * Description: opcode and its function
+ * Description: filepointer and opcodes
  * for stack, queues, LIFO, FIFO Holberton project
  */
 typedef struct global_values
 {
-        FILE *fp;
-        char **command_array;
+	FILE *fp;
+	char **command_array;
 } glob_var;
 
 /*---------------GLOBAL VARIABLES-------------------*/
@@ -66,12 +69,12 @@ void check_permissions(char *file_name);
 int str_length(char *str);
 
 /* processing_file_name.c */
-void buffer_cleaner(char *clean_buffer, char *buffer_temp, ssize_t n_characters);
+void buffer_cleaner(char *clean_buff, char *buff_temp, ssize_t n_chars);
 int process_input(char *clean_buffer);
 void tokenizer(char *clean_buffer);
 
 /* selector.c */
-void (*opcode_selector(int line_num, stack_t **stack))(stack_t **stack, unsigned int line_number);
+void (*op_selector(int, stack_t **))(stack_t **, unsigned int);
 
 /* op_functions1.c */
 void op_push(stack_t **stack, unsigned int line_number);

@@ -8,14 +8,14 @@
  */
 int stack_length(stack_t **stack)
 {
-    stack_t *copy = *stack;
-    int counter = 0;
+	stack_t *copy = *stack;
+	int counter = 0;
 
-    while (copy && stack)
+	while (copy && stack)
 	{
 		copy = copy->next;
-        counter++;
+		counter++;
 	}
 
-    return (counter);
+	return (counter);
 }
