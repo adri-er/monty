@@ -16,6 +16,10 @@ void op_rotr(stack_t **stack, unsigned int line_number)
 	if (copy_1 == NULL || stack == NULL)
 		return;
 	length = stack_length(stack);
+	if (length == 0 || length == 1)
+	{
+		return;
+	}
 	while (copy_2->next != NULL)
 	{
 		copy_2 = copy_2->next;
