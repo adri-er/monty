@@ -48,7 +48,7 @@ void tokenizer(char *clean_buffer)
 
 	while (1)
 	{
-		token = strtok(((i == 0) ? clean_buffer : NULL), " ");
+		token = strtok(((i == 0) ? clean_buffer : NULL), " \t\b\v\n");
 		global_var.command_array[i] = token;
 		if (token == NULL)
 			break;
