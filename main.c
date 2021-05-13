@@ -72,12 +72,4 @@ void check_permissions(char *file_name)
 		fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
-	/**
-	* str_len = str_length(file_name);
-	* if (file_name[str_len - 1] != 'm' || file_name[str_len - 2] != '.')
-	* {
-	*	fprintf(stderr, "Error: Can't open file %s\n", file_name);
-	*	exit(EXIT_FAILURE);
-	* }
-	*/
 }

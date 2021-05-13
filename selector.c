@@ -23,6 +23,10 @@ void (*op_selector(int l, stack_t **top))(stack_t **top, unsigned int line_n)
 		{"div", op_div},
 		{"mul", op_mul},
 		{"mod", op_mod},
+		{"pchar", op_pchar},
+		{"pstr", op_pstr},
+		{"rotl", op_rotl},
+		/*{"rotr", op_rotr},*/
 		{NULL, NULL}
 	};
 
