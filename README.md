@@ -77,5 +77,6 @@ Implementing the pchar opcode:
 | strings.c| Determines the strings length. |
 
 ## Authors ✒️
+
 - **Adriana Echeverri** - [adri-er](https://github.com/adri-er)
 - **Juan Sebastian Tovar** - [juanstm200](https://github.com/juanstm200)
