@@ -35,7 +35,7 @@ the implementation of the code with push and pall:
       push 2
       push 3
       pall
-      $ ./monty bytecodes/00.m 
+      $ ./monty bytecodes/00.m
       3
       2
       1
