@@ -54,7 +54,7 @@ Implementing the pint opcode:
       3
 Implementing the pchar opcode:
 
-      $ cat bytecodes/28.m 
+      $ cat bytecodes/28.m
       push 69
       pchar
       $ ./monty bytecodes/28.m
