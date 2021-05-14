@@ -63,6 +63,7 @@ Implementing the pchar opcode:
       E
 
 ## Functions
+
 | Funcion | Description |
 |---------|-------------|
 | main.c  | contains the call to system functions |
