@@ -41,7 +41,7 @@ the implementation of the code with push and pall:
       1
 Implementing the pint opcode:
 
-      $ cat bytecodes/06.m 
+      $ cat bytecodes/06.m
       push 1
       pint
       push 2
