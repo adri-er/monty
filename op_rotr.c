@@ -9,27 +9,23 @@
  */
 void op_rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *copy_1 = *stack, *copy_2 = *stack;
-	int i, temp, length = 0;
+	stack_t *copy = *stack;
+	int i, temp;
 
 	line_number = line_number;
-	if (copy_1 == NULL || stack == NULL)
+	if (copy == NULL || stack == NULL)
 		return;
-	length = stack_length(stack);
-	if (length == 0 || length == 1)
+	while (copy->next != NULL)
 	{
-		return;
+		copy = copy->next;
 	}
-	while (copy_2->next != NULL)
+
+	while (i < (stack_length(stack) - 1) && copy != NULL)
 	{
-		copy_2 = copy_2->next;
-	}
-	for (i = 0; i < (length) / 2; i++)
-	{
-		temp = copy_1->n;
-		copy_1->n = copy_2->n;
-		copy_2->n = temp;
-		copy_1 = copy_1->next;
-		copy_2 = copy_2->prev;
+		temp = copy->n;
+		copy->n = copy->prev->n;
+		copy->prev->n = temp;
+		i++;
+		copy = copy->prev;
 	}
 }
