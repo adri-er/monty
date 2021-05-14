@@ -32,7 +32,7 @@ void (*op_selector(int l, stack_t **top))(stack_t **top, unsigned int line_n)
 
 	for (i = 0; list[i].opcode; i++)
 	{
-		if (strcmp(global_var.command_array[0], list[i].opcode) == 0)
+		if (strcmp(global_var.command_array[0], list[i].opcode) == SAME)
 		{
 			return (list[i].f);
 		}

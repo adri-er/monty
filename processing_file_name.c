@@ -14,7 +14,7 @@ int process_input(char *clean_buffer)
 
 	*clean_buffer = '\0';
 	n_characters = getline(&buffer_tmp, &length, global_var.fp);
-	if (n_characters == -1)
+	if (n_characters == ERR_GETLINE)
 	{
 		free(buffer_tmp);
 		return (EOF);
@@ -25,7 +25,7 @@ int process_input(char *clean_buffer)
 		free(buffer_tmp);
 		return (EMPTY_LINE);
 	}
-	if (*clean_buffer == '#')
+	if (*clean_buffer == COMMENT_SYM)
 	{
 		free(buffer_tmp);
 		return (COMMENT);
@@ -49,7 +49,7 @@ void tokenizer(char *clean_buffer)
 
 	while (1)
 	{
-		token = strtok(((i == 0) ? clean_buffer : NULL), " ");
+		token = strtok(((i == 0) ? clean_buffer : NULL), DELIM);
 		global_var.command_array[i] = token;
 		if (token == NULL)
 			break;

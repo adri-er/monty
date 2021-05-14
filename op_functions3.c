@@ -92,18 +92,12 @@ void op_pstr(stack_t **stack, unsigned int line_number)
 	int i = 0;
 	stack_t *copy = *stack;
 
+	line_number = line_number;
 	while (i < stack_length(stack))
 	{
-		if (copy->n == 0)
+		if (copy->n <= ASCCII_LLIMIT || copy->n > ASCCII_ULIMIT)
 		{
 			break;
-		}
-		if (copy->n < 0 || copy->n > 127)
-		{
-			fclose(global_var.fp);
-			free_stack(stack);
-			fprintf(stderr, "L%d: can't pstr, value out of range\n", line_number);
-			exit(EXIT_FAILURE);
 		}
 		fprintf(stdout, "%c", copy->n);
 		i++;

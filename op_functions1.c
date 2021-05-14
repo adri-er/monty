@@ -16,7 +16,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fclose(global_var.fp);
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);/*Checkmsg*/
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	new_node = malloc(sizeof(stack_t));
@@ -34,7 +34,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	n = strtol(global_var.command_array[1], &end_point, 10); /* Revisar msj */
+	n = strtol(global_var.command_array[1], &end_point, 10);
 	if (end_point == global_var.command_array[1] || *end_point != '\0')
 	{	fclose(global_var.fp);
 		free_stack(stack);
@@ -47,7 +47,6 @@ void op_push(stack_t **stack, unsigned int line_number)
 	new_node->next = *stack;
 	if (*stack != NULL)
 		(*stack)->prev = new_node;
-
 	*stack = new_node;
 }
 
@@ -63,7 +62,7 @@ void op_pall(stack_t **stack, unsigned int line_number)
 	stack_t *copy = *stack;
 
 	line_number = line_number;
-	while (copy)
+	while (copy != NULL)
 	{
 		fprintf(stdout, "%d\n", copy->n);
 		copy = copy->next;

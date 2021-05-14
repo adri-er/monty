@@ -6,8 +6,8 @@ Monty 0.98 is a scripting language that is first compiled into Monty bytecode li
 
 - All files compiled on Ubuntu 14.04 LTS
 - Allow to use max one global variable
-- Usage: monty file
-  - where file is the path to the file containing Monty byte code
+- Usage: ```monty file```
+  - where ```file``` is the path to the file containing Monty byte code
 - If the user does not give any file or more than one argument to your program, print the error message ```USAGE: monty file```, followed by a new line, and exit with the status ```EXIT_FAILURE```
 - If, for any reason, it’s not possible to open the file, print the error message ```Error: Can't open file <file>```, followed by a new line, and exit with the status ```EXIT_FAILURE```.
    - where <file> is the name of the file.
@@ -22,14 +22,15 @@ Monty 0.98 is a scripting language that is first compiled into Monty bytecode li
 - You have to use malloc and free and are not allowed to use any other function from man malloc (realloc, calloc, …).
 
 ## Compile
-```$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty```
+```
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty
 
-```$ ./monty file_monty.m```
+$ ./monty monty_file.m
+```
 
 ## Examples
 
-there is a file called 00.m for the example that will contain:
-the implementation of the code with push and pall:
+A file named 00.m that contains the implementation of push and pall opcodes:
 
       $ cat bytecodes/00.m
       push 1
@@ -65,15 +66,15 @@ Implementing the pchar opcode:
 
 ## Functions
 
-| Funcion | Description |
+| File | Description |
 |---------|-------------|
-| main.c  | contains the call to system functions |
-| op_functions1.c | contains the call to the function push, pall, pint and pop |
-| op_functions2.c | contains the call to the function swap, add, nop, sub and div |
-| op_rotr.c | rotates the stack to the bottom |
-| processing_file_name.c | contains the buffer_clean and processes each line of the file introduced. |
-| selector.c |  selects function of opcode related to the line of monty |
-|stack_operations.c | determines the length of a stack |
+| main.c  | Contains the call to system functions |
+| op_functions1.c | Contains the call to the function push, pall, pint and pop |
+| op_functions2.c | Contains the call to the function swap, add, nop, sub and div |
+| op_rotr.c | Rotates the stack to the bottom. |
+| processing_file_name.c | Processes each line of the file introduced. |
+| selector.c |  Selects function of opcode related to the line of monty. |
+|stack_operations.c | Determines the length of a stack. |
 | strings.c| Determines the strings length. |
 
 ## Authors ✒️

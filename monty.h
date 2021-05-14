@@ -11,6 +11,13 @@
 /*---------------MACROS-------------------*/
 #define EMPTY_LINE 3
 #define COMMENT 4
+#define CORRECT_USAGE 2
+#define ASCCII_LLIMIT 0
+#define ASCCII_ULIMIT 127
+#define ERR_GETLINE -1
+#define COMMENT_SYM '#'
+#define DELIM " "
+#define SAME 0
 
 /*---------------STRUCTURES-------------------*/
 /**
